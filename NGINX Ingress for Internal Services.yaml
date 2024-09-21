@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: internal-services
+spec:
+  rules:
+  - host: internal.company.com
+    http:
+      paths:
+      - path: /transactions
+        backend:
+          service:
+            name: transaction-service
+            port:
+              number: 8080
